@@ -28,14 +28,12 @@ export class Phone extends Model {
 
   @AllowNull(false)
   @Column({
-    field: 'phone_id',
     type: DataTypes.STRING,
   })
     phoneId: string;
 
   @AllowNull(false)
   @Column({
-    field: 'item_id',
     type: DataTypes.STRING,
   })
     itemId: string;
@@ -48,7 +46,6 @@ export class Phone extends Model {
 
   @AllowNull(false)
   @Column({
-    field: 'full_price',
     type: DataTypes.INTEGER,
   })
     fullPrice: number;
