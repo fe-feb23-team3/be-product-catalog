@@ -16,7 +16,7 @@ const createServer = () => {
   app.use('/phones', phonesRouter.router);
 
   app.listen(PORT, () => {
-  // eslint-disable-next-line no-console
+    // eslint-disable-next-line no-console
     console.log(`http://localhost:${PORT}`);
   });
 
