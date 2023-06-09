@@ -4,8 +4,8 @@ import { Sequelize } from 'sequelize-typescript';
 import { models } from '../models';
 require('dotenv').config();
 
-const { PGHOST, PGDATABASE, PGUSER, PGPASSWORD, ENDPOINT_ID } = process.env;
-const URI = `postgres://${PGUSER}:${PGPASSWORD}@${PGHOST}/${PGDATABASE}?options=project%3D${ENDPOINT_ID}`;
+const { PGHOST, PGDATABASE, PGUSER, PGPASSWORD } = process.env;
+const URI = `postgres://${PGUSER}:${PGPASSWORD}@${PGHOST}/${PGDATABASE}`;
 
 export const dbInit = () => {
   return new Sequelize(URI, {
