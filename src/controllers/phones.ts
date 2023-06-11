@@ -11,8 +11,10 @@ export const getAll = async(req: Request, res: Response) => {
 
 export const getByPagination = async(req: Request, res: Response) => {
   const { page, size } = req.query;
-  const phones = await phonesService
-    .getByPagination(Number(page), Number(size));
+  const phones = await phonesService.getByPagination(
+    Number(page),
+    Number(size),
+  );
 
   res.send(phones);
 };

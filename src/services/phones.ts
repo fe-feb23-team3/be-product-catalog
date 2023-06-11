@@ -16,8 +16,10 @@ export const getByPagination = async(page: number, size: number) => {
   const requiredSize = size || 10;
 
   if (requiredPage > 1) {
-    return (await phoneArray)
-      .slice((requiredPage - 1) * requiredSize, requiredPage * requiredSize);
+    return (await phoneArray).slice(
+      (requiredPage - 1) * requiredSize,
+      requiredPage * requiredSize,
+    );
   }
 
   return (await phoneArray).slice(0, requiredSize);
