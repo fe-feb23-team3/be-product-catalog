@@ -9,6 +9,13 @@ export const getAll = async(req: Request, res: Response) => {
   res.send(phones);
 };
 
+export const getById = async(req: Request, res: Response) => {
+  const { id } = req.params;
+  const phone = await phonesService.getById(Number(id));
+
+  res.send(phone);
+};
+
 export const getByPagination = async(req: Request, res: Response) => {
   const { page, size } = req.query;
   const phones = await phonesService.getByPagination(
