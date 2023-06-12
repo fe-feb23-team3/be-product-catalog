@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon src/server.ts",
-    "build": "npm i && tsc -p . && cp -r public build",
+    "build": "tsc -p . && cp -r public build",
     "format": "prettier --write . --ignore-path .fix-style-ignore",
     "lint": "eslint --ignore-path .gitignore --ext .js,.ts,.tsx .",
     "fstyle": "npm run format && npm run lint -- --fix",
