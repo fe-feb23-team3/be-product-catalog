@@ -14,6 +14,7 @@ const createServer = () => {
   app.use(express.json());
 
   app.use('/phones', phonesRouter.router);
+  app.use('/phones/pagination', phonesRouter.router);
 
   app.listen(PORT, () => {
     // eslint-disable-next-line no-console
