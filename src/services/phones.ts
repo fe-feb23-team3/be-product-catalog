@@ -42,9 +42,9 @@ export const getByPagination = async(page: number, size: number) => {
   return (await phoneArray).slice(0, requiredSize);
 };
 
-export const getRecomendedPhones = async(id: number) => {
+export const getRecomendedPhones = async(id: string) => {
   const phoneArray = await getAll();
-  const chosenPhone = await Phone.findByPk(String(id));
+  const chosenPhone = await Phone.findByPk(id);
 
   if (!chosenPhone) {
     return [];
