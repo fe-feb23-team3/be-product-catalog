@@ -6,21 +6,14 @@ exports.dbInit = void 0;
 const sequelize_typescript_1 = require("sequelize-typescript");
 const models_1 = require("../models");
 require('dotenv').config();
-// const { PGHOST, PGDATABASE, PGUSER, PGPASSWORD, ENDPOINT_ID } = process.env;
-const URI = 'postgres://bobersweat:ogsW7uFwxn3j@ep-long-meadow-678376.us-east-2.aws.neon.tech/neondb';
+const { PGHOST, PGDATABASE, PGUSER, PGPASSWORD } = process.env;
+const URI = `postgres://${PGUSER}:${PGPASSWORD}@${PGHOST}/${PGDATABASE}`;
 const dbInit = () => {
-    try {
-        const db = new sequelize_typescript_1.Sequelize(URI, {
-            models: models_1.models,
-            dialectOptions: {
-                ssl: true,
-            },
-        });
-        console.log('DB successfully initialized');
-        return db;
-    }
-    catch (error) {
-        console.log('DB failed to connect', error);
-    }
+    return new sequelize_typescript_1.Sequelize(URI, {
+        models: models_1.models,
+        dialectOptions: {
+            ssl: true,
+        },
+    });
 };
 exports.dbInit = dbInit;

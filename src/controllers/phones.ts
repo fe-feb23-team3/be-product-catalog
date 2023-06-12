@@ -32,3 +32,10 @@ export const getByPagination = async(req: Request, res: Response) => {
 
   res.send(phones);
 };
+
+export const getRecomendedPhones = async(req: Request, res: Response) => {
+  const { id } = req.params;
+  const phones = await phonesService.getRecomendedPhones(Number(id));
+
+  res.send(phones);
+};

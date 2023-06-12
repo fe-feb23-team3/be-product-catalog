@@ -29,8 +29,6 @@ export const getPhoneImage = async(id: number) => {
 export const getByPagination = async(page: number, size: number) => {
   const phoneArray = getAll();
 
-  console.log(phoneArray);
-
   const requiredPage = page || 1;
   const requiredSize = size || 10;
 
@@ -42,4 +40,23 @@ export const getByPagination = async(page: number, size: number) => {
   }
 
   return (await phoneArray).slice(0, requiredSize);
+};
+
+export const getRecomendedPhones = async(id: number) => {
+  const phoneArray = await getAll();
+  const chosenPhone = await Phone.findByPk(String(id));
+
+  if (!chosenPhone) {
+    return [];
+  }
+
+  const recommendedPhones = phoneArray.filter((phone) => {
+    return (
+      phone.price <= chosenPhone.price + 50
+      && phone.price >= chosenPhone.price - 50
+      && phone.id !== chosenPhone.id
+    );
+  });
+
+  return recommendedPhones.slice(0, 8);
 };

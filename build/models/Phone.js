@@ -13,7 +13,6 @@ let Phone = exports.Phone = class Phone extends sequelize_typescript_1.Model {
 };
 __decorate([
     sequelize_typescript_1.PrimaryKey,
-    sequelize_typescript_1.AutoIncrement,
     (0, sequelize_typescript_1.AllowNull)(false),
     (0, sequelize_typescript_1.Column)({
         type: sequelize_1.DataTypes.STRING,
@@ -28,12 +27,14 @@ __decorate([
 __decorate([
     (0, sequelize_typescript_1.AllowNull)(false),
     (0, sequelize_typescript_1.Column)({
+        field: 'phone_id',
         type: sequelize_1.DataTypes.STRING,
     })
 ], Phone.prototype, "phoneId", void 0);
 __decorate([
     (0, sequelize_typescript_1.AllowNull)(false),
     (0, sequelize_typescript_1.Column)({
+        field: 'item_id',
         type: sequelize_1.DataTypes.STRING,
     })
 ], Phone.prototype, "itemId", void 0);
@@ -46,6 +47,7 @@ __decorate([
 __decorate([
     (0, sequelize_typescript_1.AllowNull)(false),
     (0, sequelize_typescript_1.Column)({
+        field: 'full_price',
         type: sequelize_1.DataTypes.INTEGER,
     })
 ], Phone.prototype, "fullPrice", void 0);
