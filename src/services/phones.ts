@@ -7,6 +7,12 @@ export const getAll = async() => {
   return phones;
 };
 
+export const getById = async(id: number) => {
+  const phone = await Phone.findByPk(String(id));
+
+  return phone;
+};
+
 export const getByPagination = async(page: number, size: number) => {
   const phoneArray = getAll();
 
