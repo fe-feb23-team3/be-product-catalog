@@ -15,7 +15,7 @@ export const getById = async(id: number) => {
 };
 
 export const getPhoneImage = async(id: number) => {
-  const phone = await Phone.findByPk(String(id));
+  const phone = await getById(id);
 
   const path = `public/${phone?.image}`;
 
