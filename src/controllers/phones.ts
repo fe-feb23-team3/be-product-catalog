@@ -24,10 +24,11 @@ export const getPhoneImage = async(req: Request, res: Response) => {
 };
 
 export const getByPagination = async(req: Request, res: Response) => {
-  const { page, size } = req.query;
+  const { page, size, sort } = req.query;
   const phones = await phonesService.getByPagination(
     Number(page),
     Number(size),
+    String(sort),
   );
 
   res.send(phones);

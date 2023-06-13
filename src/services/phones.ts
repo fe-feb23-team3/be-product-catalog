@@ -26,11 +26,54 @@ export const getPhoneImage = async(id: number) => {
   }
 };
 
-export const getByPagination = async(page: number, size: number) => {
+export const getByPagination = async(
+  page: number,
+  size: number,
+  sort: string,
+) => {
   const phoneArray = await getAll();
 
   const requiredPage = page || 1;
   const requiredSize = size || 10;
+  const requiredSort = sort || 'default';
+
+  switch (requiredSort) {
+    case 'price_low_high': {
+      phoneArray.sort((a, b) => {
+        return a.price - b.price;
+      });
+      break;
+    }
+
+    case 'price_high_low': {
+      phoneArray.sort((a, b) => {
+        return b.price - a.price;
+      });
+      break;
+    }
+
+    case 'year_low_high': {
+      phoneArray.sort((a, b) => {
+        return a.year - b.year;
+      });
+      break;
+    }
+
+    case 'year_high_low': {
+      phoneArray.sort((a, b) => {
+        return b.year - a.year;
+      });
+      break;
+    }
+
+    case 'default': {
+      break;
+    }
+
+    default: {
+      break;
+    }
+  };
 
   if (requiredPage > 1) {
     return phoneArray.slice(
