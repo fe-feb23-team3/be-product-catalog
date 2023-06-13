@@ -15,7 +15,7 @@ export const getById = async(id: number) => {
 };
 
 export const getPhoneImage = async(id: number) => {
-  const phone = await Phone.findByPk(String(id));
+  const phone = await getById(id);
 
   const path = `public/${phone?.image}`;
 
@@ -118,9 +118,7 @@ export const getByDiscount = async() => {
   const phoneArray = await getAll();
 
   const hotDeals = phoneArray.sort((a, b) => {
-    return (
-      ((b.fullPrice - b.price) * 100) - ((a.fullPrice - a.price) * 100)
-    );
+    return (b.fullPrice - b.price) * 100 - (a.fullPrice - a.price) * 100;
   });
 
   return hotDeals.slice(0, 8);
