@@ -46,3 +46,9 @@ export const getNewestPhones = async(req: Request, res: Response) => {
 
   res.send(phones);
 };
+
+export const getByDiscount = async(req: Request, res: Response) => {
+  const phones = await phonesService.getByDiscount();
+
+  res.send(phones);
+};
