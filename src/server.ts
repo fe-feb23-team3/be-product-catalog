@@ -15,6 +15,10 @@ const createServer = () => {
 
   app.use('/phones', phonesRouter.router);
   app.use('/phones/pagination', phonesRouter.router);
+  app.use('/phones/:id', phonesRouter.router);
+  app.use('/phones/:id/image', phonesRouter.router);
+  app.use('/phones/:id/recomended', phonesRouter.router);
+  app.use('/phones/newest', phonesRouter.router);
 
   app.listen(PORT, () => {
     // eslint-disable-next-line no-console
