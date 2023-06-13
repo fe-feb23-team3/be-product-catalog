@@ -27,13 +27,13 @@ export const getPhoneImage = async(id: number) => {
 };
 
 export const getByPagination = async(page: number, size: number) => {
-  const phoneArray = getAll();
+  const phoneArray = await getAll();
 
   const requiredPage = page || 1;
   const requiredSize = size || 10;
 
   if (requiredPage > 1) {
-    return (await phoneArray).slice(
+    return phoneArray.slice(
       (requiredPage - 1) * requiredSize,
       requiredPage * requiredSize,
     );
@@ -59,4 +59,14 @@ export const getRecomendedPhones = async(id: string) => {
   });
 
   return recommendedPhones.slice(0, 8);
+};
+
+export const getNewestPhones = async() => {
+  const phoneArray = await getAll();
+
+  const newestPhones = phoneArray.sort((a, b) => {
+    return b.year - a.year;
+  });
+
+  return newestPhones.slice(0, 8);
 };
