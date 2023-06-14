@@ -29,6 +29,7 @@ const createServer = () => {
   app.use('/products/accessories', accessoriesRouter.router);
 
   app.use('/phoneCardData', phoneCardDataRouter.router);
+  app.use('/phoneCardData/:id', phoneCardDataRouter.router);
 
   app.listen(PORT, () => {
     // eslint-disable-next-line no-console
