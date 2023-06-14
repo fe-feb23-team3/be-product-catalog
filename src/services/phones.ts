@@ -34,32 +34,32 @@ export const getByPagination = async(
   const phoneArray = await getAll();
 
   const requiredPage = page || 1;
-  const requiredSize = size || 10;
+  const requiredSize = size || 8;
   const requiredSort = sort || 'default';
 
   switch (requiredSort) {
-    case 'price_low_high': {
+    case 'price_asc': {
       phoneArray.sort((a, b) => {
         return a.price - b.price;
       });
       break;
     }
 
-    case 'price_high_low': {
+    case 'price_desc': {
       phoneArray.sort((a, b) => {
         return b.price - a.price;
       });
       break;
     }
 
-    case 'year_low_high': {
+    case 'year_asc': {
       phoneArray.sort((a, b) => {
         return a.year - b.year;
       });
       break;
     }
 
-    case 'year_high_low': {
+    case 'year_desc': {
       phoneArray.sort((a, b) => {
         return b.year - a.year;
       });
@@ -82,7 +82,13 @@ export const getByPagination = async(
     );
   }
 
-  return (await phoneArray).slice(0, requiredSize);
+  const info = {
+    phoneLength: phoneArray.length,
+    pages: Math.ceil(phoneArray.length / requiredSize),
+    visiblePhones: (await phoneArray).slice(0, requiredSize),
+  };
+
+  return info;
 };
 
 export const getRecomendedPhones = async(id: string) => {
