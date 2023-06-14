@@ -1,10 +1,13 @@
+/* eslint-disable max-len */
 import { Phone } from './models/Phone';
+import { PhoneCardData } from './models/PhoneCardData';
 import { dbInit } from './utils/dbInit';
 
 const sync = async() => {
   dbInit();
 
   await Phone.sync({ alter: true });
+  await PhoneCardData.sync({ alter: true });
 };
 
 sync();

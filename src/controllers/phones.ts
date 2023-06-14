@@ -16,12 +16,39 @@ export const getById = async(req: Request, res: Response) => {
   res.send(phone);
 };
 
+export const getPhoneImage = async(req: Request, res: Response) => {
+  const { id } = req.params;
+  const image = await phonesService.getPhoneImage(Number(id));
+
+  res.send(image);
+};
+
 export const getByPagination = async(req: Request, res: Response) => {
-  const { page, size } = req.query;
+  const { page, size, sort } = req.query;
   const phones = await phonesService.getByPagination(
     Number(page),
     Number(size),
+    String(sort),
   );
+
+  res.send(phones);
+};
+
+export const getRecomendedPhones = async(req: Request, res: Response) => {
+  const { id } = req.params;
+  const phones = await phonesService.getRecomendedPhones(id);
+
+  res.send(phones);
+};
+
+export const getNewestPhones = async(req: Request, res: Response) => {
+  const phones = await phonesService.getNewestPhones();
+
+  res.send(phones);
+};
+
+export const getByDiscount = async(req: Request, res: Response) => {
+  const phones = await phonesService.getByDiscount();
 
   res.send(phones);
 };
