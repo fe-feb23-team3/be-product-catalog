@@ -5,3 +5,9 @@ export const getAll = async() => {
 
   return phoneData;
 };
+
+export const getById = async(id: string) => {
+  const phoneData = await PhoneCardData.findByPk(id);
+
+  return phoneData;
+};
