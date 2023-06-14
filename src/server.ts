@@ -3,6 +3,8 @@ import cors from 'cors';
 import { dbInit } from './utils/dbInit';
 import * as phonesRouter from './routers/phones';
 import * as phoneCardDataRouter from './routers/phoneCardData';
+import * as accessoriesRouter from './routers/accessories';
+import * as tabletsRouter from './routers/tablets';
 
 const PORT = 5000;
 
@@ -14,13 +16,17 @@ const createServer = () => {
   app.use(cors());
   app.use(express.json());
 
-  app.use('/phones', phonesRouter.router);
-  app.use('/phones/pagination', phonesRouter.router);
-  app.use('/phones/:id', phonesRouter.router);
-  app.use('/phones/:id/image', phonesRouter.router);
-  app.use('/phones/:id/recomended', phonesRouter.router);
-  app.use('/phones/newest', phonesRouter.router);
-  app.use('/phones/discount', phonesRouter.router);
+  app.use('/products/phones', phonesRouter.router);
+  app.use('/products/phones/pagination', phonesRouter.router);
+  app.use('/products/phones/:id', phonesRouter.router);
+  app.use('/products/phones/:id/image', phonesRouter.router);
+  app.use('/products/phones/:id/recomended', phonesRouter.router);
+  app.use('/products/phones/newest', phonesRouter.router);
+  app.use('/products/phones/discount', phonesRouter.router);
+
+  app.use('/products/tablets', tabletsRouter.router);
+
+  app.use('/products/accessories', accessoriesRouter.router);
 
   app.use('/phoneCardData', phoneCardDataRouter.router);
 
