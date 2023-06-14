@@ -76,7 +76,7 @@ export const getByPagination = async(
     }
   }
 
-  if (requiredPage > 1) {
+  if (requiredPage >= 1) {
     visiblePhones = phoneArray.slice(
       (requiredPage - 1) * requiredSize,
       requiredPage * requiredSize,
