@@ -36,6 +36,7 @@ export const getByPagination = async(
   const requiredPage = page || 1;
   const requiredSize = size || 8;
   const requiredSort = sort || 'default';
+  let visiblePhones: Phone[] = [];
 
   switch (requiredSort) {
     case 'price_asc': {
@@ -75,17 +76,16 @@ export const getByPagination = async(
     }
   }
 
-  if (requiredPage > 1) {
-    return phoneArray.slice(
+  if (requiredPage >= 1) {
+    visiblePhones = phoneArray.slice(
       (requiredPage - 1) * requiredSize,
       requiredPage * requiredSize,
     );
   }
 
   const info = {
-    phoneLength: phoneArray.length,
     pages: Math.ceil(phoneArray.length / requiredSize),
-    visiblePhones: (await phoneArray).slice(0, requiredSize),
+    visiblePhones: visiblePhones.slice(0, requiredSize),
   };
 
   return info;
@@ -124,9 +124,7 @@ export const getByDiscount = async() => {
   const phoneArray = await getAll();
 
   const hotDeals = phoneArray.sort((a, b) => {
-    return (
-      ((b.fullPrice - b.price) * 100) - ((a.fullPrice - a.price) * 100)
-    );
+    return (b.fullPrice - b.price) * 100 - (a.fullPrice - a.price) * 100;
   });
 
   return hotDeals.slice(0, 8);
