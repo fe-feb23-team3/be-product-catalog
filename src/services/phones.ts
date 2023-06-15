@@ -99,6 +99,25 @@ export const getByPagination = async(
   return info;
 };
 
+export const getRecomendedPhones = async(id: string) => {
+  const phoneArray = await getAll();
+  const chosenPhone = await Phone.findByPk(id);
+
+  if (!chosenPhone) {
+    return [];
+  }
+
+  const recommendedPhones = phoneArray.filter((phone) => {
+    return (
+      phone.price <= chosenPhone.price + 50
+      && phone.price >= chosenPhone.price - 50
+      && phone.id !== chosenPhone.id
+    );
+  });
+
+  return info;
+};
+
 export const getNewestPhones = async() => {
   const phoneArray = await getAll();
 
