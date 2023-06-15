@@ -17,8 +17,11 @@ export const getById = async(req: Request, res: Response) => {
 };
 
 export const getPhoneImage = async(req: Request, res: Response) => {
-  const { id } = req.params;
-  const image = await phonesService.getPhoneImage(Number(id));
+  const { imagePath } = req.params;
+  const image = await phonesService.getImageByPath(imagePath);
+
+  // eslint-disable-next-line no-console
+  console.log(imagePath);
 
   res.send(image);
 };

@@ -50,5 +50,11 @@ export const getImagesById = async(id: string) => {
 export const getImagesById = async(id: string) => {
   const phoneData = await PhoneCardData.findByPk(id);
 
-  return phoneData?.images;
+  const path = `public/${phoneData?.images}`;
+
+  if (path) {
+    const image = fs.readFileSync(path);
+
+    return image;
+  }
 };
