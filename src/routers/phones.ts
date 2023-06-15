@@ -10,6 +10,5 @@ router.get('/pagination', phonesController.getByPagination);
 router.get('/newest', phonesController.getNewestPhones);
 router.get('/discount', phonesController.getByDiscount);
 
-router.get('/:id', phonesController.getById);
 router.get('/:id/image', phonesController.getPhoneImage);
-router.get('/:id/recomended', phonesController.getRecomendedPhones);
+router.get('/:id', phonesController.getById);
