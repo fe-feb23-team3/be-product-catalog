@@ -14,8 +14,18 @@ export const getById = async(id: number) => {
   return phone;
 };
 
-export const getImageByPath = async(imagePath: string) => {
-  const path = `public/${imagePath}`;
+export const getByPathId = async(pathId: string) => {
+  const phone = await Phone.findOne({ where: { phoneId: pathId } });
+
+  console.log(phone);
+
+  return phone;
+};
+
+export const getPhoneImage = async(id: number) => {
+  const phone = await getById(id);
+
+  const path = `public/${phone?.image}`;
 
   if (path) {
     const image = fs.readFileSync(path);

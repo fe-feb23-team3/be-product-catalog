@@ -33,13 +33,18 @@ export const getRecomendedPhones = async(id: string) => {
 };
 
 export const getImagesById = async(id: string) => {
-  const phoneData = await PhoneCardData.findByPk(id);
+  const phoneData = await getById(id);
+  const imagesArray = [];
 
-  const path = `public/${phoneData?.images}`;
+  if (phoneData) {
+    for (let i = 0; i < phoneData.images.length; i++) {
+      const imagePath = `public/${phoneData?.images[i]}`;
 
-  if (path) {
-    const image = fs.readFileSync(path);
+      const image = fs.readFileSync(imagePath);
 
-    return image;
+      imagesArray.push(image);
+    }
   }
+
+  return imagesArray;
 };
