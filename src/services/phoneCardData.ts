@@ -11,3 +11,9 @@ export const getById = async(id: string) => {
 
   return phoneData;
 };
+
+export const getImagesById = async(id: string) => {
+  const phoneData = await PhoneCardData.findByPk(id);
+
+  return phoneData?.images;
+};
