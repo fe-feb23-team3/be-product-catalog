@@ -19,8 +19,7 @@ const createServer = () => {
   app.use('/products/phones', phonesRouter.router);
   app.use('/products/phones/pagination', phonesRouter.router);
   app.use('/products/phones/:id', phonesRouter.router);
-  app.use('/products/phones/:id/image', phonesRouter.router);
-  app.use('/products/phones/:id/recomended', phonesRouter.router);
+  app.use('/:imagePath', phonesRouter.router);
   app.use('/products/phones/newest', phonesRouter.router);
   app.use('/products/phones/discount', phonesRouter.router);
 
@@ -30,6 +29,7 @@ const createServer = () => {
 
   app.use('/phoneCardData', phoneCardDataRouter.router);
   app.use('/phoneCardData/:id', phoneCardDataRouter.router);
+  app.use('/phoneCardData/:id/recomended', phonesRouter.router);
   app.use('/phoneCardData/:id/images', phoneCardDataRouter.router);
 
   app.listen(PORT, () => {
