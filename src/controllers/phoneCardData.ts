@@ -15,3 +15,10 @@ export const getById = async(req: Request, res: Response) => {
 
   res.send(requiredPhoneCardData);
 };
+
+export const getImagesById = async(req: Request, res: Response) => {
+  const { id } = req.params;
+  const requiredImages = await phoneCardDataService.getImagesById(String(id));
+
+  res.send(requiredImages);
+};
