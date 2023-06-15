@@ -17,8 +17,11 @@ export const getById = async(req: Request, res: Response) => {
 };
 
 export const getPhoneImage = async(req: Request, res: Response) => {
-  const { id } = req.params;
-  const image = await phonesService.getPhoneImage(Number(id));
+  const { imagePath } = req.params;
+  const image = await phonesService.getImageByPath(imagePath);
+
+  // eslint-disable-next-line no-console
+  console.log(imagePath);
 
   res.send(image);
 };
@@ -30,13 +33,6 @@ export const getByPagination = async(req: Request, res: Response) => {
     Number(size),
     String(sort),
   );
-
-  res.send(phones);
-};
-
-export const getRecomendedPhones = async(req: Request, res: Response) => {
-  const { id } = req.params;
-  const phones = await phonesService.getRecomendedPhones(id);
 
   res.send(phones);
 };
