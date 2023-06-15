@@ -19,7 +19,9 @@ const createServer = () => {
   app.use('/products/phones', phonesRouter.router);
   app.use('/products/phones/pagination', phonesRouter.router);
   app.use('/products/phones/:id', phonesRouter.router);
-  app.use('/:imagePath', phonesRouter.router);
+  app.use('/products/phones/:image', phonesRouter.router);
+  app.use('/products/phones/:id/image', phonesRouter.router);
+  app.use('/products/phones/:id/recomended', phonesRouter.router);
   app.use('/products/phones/newest', phonesRouter.router);
   app.use('/products/phones/discount', phonesRouter.router);
 
