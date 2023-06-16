@@ -22,7 +22,8 @@
     "pg-hstore": "^2.3.4",
     "reflect-metadata": "^0.1.13",
     "sequelize": "^6.32.0",
-    "sequelize-typescript": "^2.1.5"
+    "sequelize-typescript": "^2.1.5",
+    "sharp": "^0.32.1"
   },
   "devDependencies": {
     "@mate-academy/eslint-config": "0.0.25",
