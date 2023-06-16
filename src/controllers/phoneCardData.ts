@@ -29,3 +29,13 @@ export const getImagesById = async(req: Request, res: Response) => {
 
   res.send(requiredImages);
 };
+
+export const getImageByPath = async(req: Request, res: Response) => {
+  const { id, orderNumber } = req.params;
+  const requiredImage = await phoneCardDataService.getImageByPath(
+    String(id),
+    Number(orderNumber),
+  );
+
+  res.send(requiredImage);
+};

@@ -48,3 +48,11 @@ export const getImagesById = async(id: string) => {
 
   return imagesArray;
 };
+
+export const getImageByPath = async(id: string, orderNumber: number) => {
+  const phoneData = await getById(id);
+  const imagePath = `public/${phoneData?.images[orderNumber]}`;
+  const image = fs.readFileSync(imagePath);
+
+  return image;
+};
