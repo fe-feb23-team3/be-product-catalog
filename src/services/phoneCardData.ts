@@ -1,8 +1,9 @@
+import { Phone } from '../models/Phone';
 import { PhoneCardData } from '../models/PhoneCardData';
 import fs from 'fs';
 
 export const getAll = async() => {
-  const phoneData = await PhoneCardData.findAll();
+  const phoneData = await Phone.findAll();
 
   return phoneData;
 };
@@ -23,8 +24,8 @@ export const getRecomendedPhones = async(id: string) => {
 
   const recommendedPhones = phoneArray.filter((phone) => {
     return (
-      phone.priceDiscount <= chosenPhone.priceDiscount + 50
-      && phone.priceDiscount >= chosenPhone.priceDiscount - 50
+      phone.fullPrice <= chosenPhone.priceDiscount + 50
+      && phone.fullPrice >= chosenPhone.priceDiscount - 50
       && phone.id !== chosenPhone.id
     );
   });
