@@ -24,9 +24,9 @@ export const getRecomendedPhones = async(id: string) => {
 
   const recommendedPhones = phoneArray.filter((phone) => {
     return (
-      phone.fullPrice <= chosenPhone.priceDiscount + 50
-      && phone.fullPrice >= chosenPhone.priceDiscount - 50
-      && phone.id !== chosenPhone.id
+      phone.fullPrice <= chosenPhone.priceDiscount + 200
+      && phone.fullPrice >= chosenPhone.priceDiscount - 200
+      && phone.itemId !== chosenPhone.id
     );
   });
 
