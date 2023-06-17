@@ -5,6 +5,7 @@ import * as phonesRouter from './routers/phones';
 import * as phoneCardDataRouter from './routers/phoneCardData';
 import * as accessoriesRouter from './routers/accessories';
 import * as tabletsRouter from './routers/tablets';
+import * as authRouter from './routers/authentification';
 
 const PORT = 5000;
 
@@ -34,6 +35,8 @@ const createServer = () => {
   app.use('/phoneCardData/:id/recomended', phoneCardDataRouter.router);
   app.use('/phoneCardData/:id/images', phoneCardDataRouter.router);
   app.use('/phoneCardData/:id/images/:orderNumber', phoneCardDataRouter.router);
+
+  app.use('/register', authRouter.router);
 
   app.listen(PORT, () => {
     // eslint-disable-next-line no-console
