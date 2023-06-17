@@ -14,12 +14,16 @@ export const getById = async(id: number) => {
   return phone;
 };
 
-export const getByPathId = async(pathId: string) => {
-  const phone = await Phone.findOne({ where: { phoneId: pathId } });
+export const getImagesById = async(id: string) => {
+  const phoneData = await Phone.findByPk(id);
 
-  console.log(phone);
+  const path = `public/${phoneData?.image}`;
 
-  return phone;
+  if (path) {
+    const image = fs.readFileSync(path);
+
+    return image;
+  }
 };
 
 export const getPhoneImage = async(id: number) => {
@@ -95,25 +99,6 @@ export const getByPagination = async(
     pages: Math.ceil(phoneArray.length / requiredSize),
     visiblePhones: visiblePhones.slice(0, requiredSize),
   };
-
-  return info;
-};
-
-export const getRecomendedPhones = async(id: string) => {
-  const phoneArray = await getAll();
-  const chosenPhone = await Phone.findByPk(id);
-
-  if (!chosenPhone) {
-    return [];
-  }
-
-  const recommendedPhones = phoneArray.filter((phone) => {
-    return (
-      phone.price <= chosenPhone.price + 50
-      && phone.price >= chosenPhone.price - 50
-      && phone.id !== chosenPhone.id
-    );
-  });
 
   return info;
 };
