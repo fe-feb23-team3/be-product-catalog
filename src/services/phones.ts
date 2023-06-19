@@ -8,8 +8,8 @@ export const getAll = async() => {
   return phones;
 };
 
-export const getById = async(id: number) => {
-  const phone = await Phone.findByPk(String(id));
+export const getById = async(phoneId: string) => {
+  const phone = await Phone.findByPk(phoneId);
 
   return phone;
 };
@@ -26,7 +26,7 @@ export const getImagesById = async(id: string) => {
   }
 };
 
-export const getPhoneImage = async(id: number) => {
+export const getPhoneImage = async(id: string) => {
   const phone = await getById(id);
 
   const path = `public/${phone?.image}`;
@@ -47,7 +47,7 @@ export const getByPagination = async(
 
   const requiredPage = page || 1;
   const requiredSize = size || 8;
-  const requiredSort = sort || 'default';
+  const requiredSort = sort || 'year_desc';
   let visiblePhones: Phone[] = [];
 
   switch (requiredSort) {
@@ -76,10 +76,6 @@ export const getByPagination = async(
       phoneArray.sort((a, b) => {
         return b.year - a.year;
       });
-      break;
-    }
-
-    case 'default': {
       break;
     }
 
