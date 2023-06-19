@@ -26,18 +26,6 @@ export const getImagesById = async(id: string) => {
   }
 };
 
-export const getPhoneImage = async(id: string) => {
-  const phone = await getById(id);
-
-  const path = `public/${phone?.image}`;
-
-  if (path) {
-    const image = fs.readFileSync(path);
-
-    return image;
-  }
-};
-
 export const getByPagination = async(
   page: number,
   size: number,
