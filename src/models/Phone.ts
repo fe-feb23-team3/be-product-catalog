@@ -13,7 +13,6 @@ import {
   updatedAt: false,
 })
 export class Phone extends Model {
-  @PrimaryKey
   @AllowNull(false)
   @Column({
     type: DataTypes.STRING,
@@ -26,6 +25,7 @@ export class Phone extends Model {
   })
     category: string;
 
+  @PrimaryKey
   @AllowNull(false)
   @Column({
     field: 'phone_id',
