@@ -11,7 +11,7 @@ export const getAll = async(req: Request, res: Response) => {
 
 export const getById = async(req: Request, res: Response) => {
   const { id } = req.params;
-  const phone = await phonesService.getById(Number(id));
+  const phone = await phonesService.getById(id);
 
   res.send(phone);
 };
