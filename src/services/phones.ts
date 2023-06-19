@@ -47,7 +47,7 @@ export const getByPagination = async(
 
   const requiredPage = page || 1;
   const requiredSize = size || 8;
-  const requiredSort = sort || 'default';
+  const requiredSort = sort || 'year_desc';
   let visiblePhones: Phone[] = [];
 
   switch (requiredSort) {
@@ -76,10 +76,6 @@ export const getByPagination = async(
       phoneArray.sort((a, b) => {
         return b.year - a.year;
       });
-      break;
-    }
-
-    case 'default': {
       break;
     }
 

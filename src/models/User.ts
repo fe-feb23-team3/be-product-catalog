@@ -35,4 +35,4 @@ export class User extends Model {
     type: DataTypes.STRING,
   })
     password: string;
-};
+}

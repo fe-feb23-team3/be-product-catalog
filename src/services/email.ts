@@ -14,18 +14,24 @@ export const send = ({
   email,
   subject,
   html,
-}: { email: string, subject: string, html: string }) => {
-  return transporter.sendMail({
-    from: 'Nice Gadgets',
-    to: email,
-    subject: subject,
-    text: '',
-    html: html,
-  }).catch((error) => {
-    // eslint-disable-next-line no-console
-    console.error('Error sending email:', error);
-    throw error;
-  });
+}: {
+  email: string;
+  subject: string;
+  html: string;
+}) => {
+  return transporter
+    .sendMail({
+      from: 'Nice Gadgets',
+      to: email,
+      subject: subject,
+      text: '',
+      html: html,
+    })
+    .catch((error) => {
+      // eslint-disable-next-line no-console
+      console.error('Error sending email:', error);
+      throw error;
+    });
 };
 
 export const sendActivationLink = async(email: string, token: string) => {
