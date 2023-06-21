@@ -19,12 +19,15 @@ export const login = async(email: string, password: string) => {
 
     return { user, accessToken };
   } catch (error) {
-    console.log(error);
   }
 };
 
 export const register = async(email: string, password: string) => {
-  const user = await User.create({ email, password });
+  try {
+    const user = await User.create({ email, password });
 
-  return user;
+    return user;
+  } catch (error) {
+    console.log(error);
+  }
 };
