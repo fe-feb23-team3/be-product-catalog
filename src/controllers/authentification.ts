@@ -24,9 +24,13 @@ export const register = async(
   res: Response,
   next: NextFunction,
 ) => {
-  const { email, password } = req.body;
+  try {
+    const { email, password } = req.body;
 
-  const user = await authService.register(email, password);
+    const user = await authService.register(email, password);
 
-  res.send(user);
+    res.send(user);
+  } catch (error) {
+    next(error);
+  }
 };
