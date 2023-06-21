@@ -18,8 +18,7 @@ export const login = async(email: string, password: string) => {
     const accessToken = jwtService.genereteAccessToken(user);
 
     return { user, accessToken };
-  } catch (error) {
-  }
+  } catch (error) {}
 };
 
 export const register = async(email: string, password: string) => {
